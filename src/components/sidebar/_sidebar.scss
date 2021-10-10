@@ -1,0 +1,29 @@
+@import '../../base.scss';
+
+.sidebar {
+    background-color: $black-secondary;
+    display: flex;
+    flex-direction: column;
+    width: 15.625rem;
+    height: 90vh;
+    padding-top: 32px;
+    div {
+        display: flex;
+        align-items: center;
+        padding: 9.6px 24px;
+        margin: 3.2px 0;
+        cursor: pointer;
+        span {
+            margin-left: 16px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+        }
+        &:hover {
+            background-color: $border-color;
+        }
+    }
+    hr {
+        background-color: $border-color;
+    }
+}
