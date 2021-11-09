@@ -7,6 +7,9 @@
   padding: 16px 48px;
   height: 10vh;
   width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
   background-color: $black-primary;
 
   &__menu {

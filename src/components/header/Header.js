@@ -4,10 +4,10 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { MdNotifications, MdApps } from 'react-icons/md';
 import './_header.scss';
 
-const Header = () => {
+const Header = ({ handleToggleSidebar }) => {
     return (
         <div className='header'>
-            <FaBars className='header__menu' size={26} />
+            <FaBars className='header__menu' size={26} onClick={handleToggleSidebar} />
             <img className='header__logo' src='/images/youtube-logo.png' alt='Youtube Logo' />
             <form>
                 <input type='text' placeholder='Search' />
