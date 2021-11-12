@@ -21,6 +21,7 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
         fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=AIzaSyDPfH26mn8umXzswSpKHpKRp6ag1me3Yr0`)
             .then(res => res.json())
             .then(data => {
+                console.log('===== fetching channel details from video metadata')
                 dispatch(getChannelDetailsSuccess(data.items[0]));
             })
             .catch(err => {
@@ -35,6 +36,7 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
             })
             .then(res => res.json())
             .then(data => {
+                console.log('===== fetching subscription details from video metadata')
                 dispatch(checkSubscriptionStatus(data));
             })
             .catch(err => {

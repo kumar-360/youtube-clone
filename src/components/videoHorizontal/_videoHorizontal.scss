@@ -12,11 +12,20 @@
     &-wrapper {
       width: 100%;
     }
+    &-channel {
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+    }
+  }
+  &__description {
+    @include line-clamp(2);
   }
   &__duration {
     position: absolute;
-    bottom: 0.3rem;
-    right: 0.3rem;
+    bottom: 0.2rem;
+    right: 1rem;
+    font-size: 0.9rem;
     padding: 0.2rem;
     background-color: #080808;
     border-radius: 3px;
@@ -28,7 +37,7 @@
     font-size: 1rem;
     color: #fff;
     letter-spacing: 0.3px;
-    @include line-clamp(1);
+    @include line-clamp(2);
   }
   &__channel {
     img {
@@ -48,24 +57,24 @@
 @media (max-width: $breakpoint-small) {
   .videoHorizontal {
     font-size: 0.8rem;
-  }
-  &__details {
-    @include line-clamp(1);
-  }
-  &__channel {
-    margin: 0.1rem 0;
-    img {
+    &__details {
+      @include line-clamp(1);
+    }
+    &__channel {
+      margin: 0.1rem 0;
+      img {
+        display: none;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+    }
+    &__description {
       display: none;
     }
-    p {
-      font-size: 0.9rem;
+    &__title {
+      font-size: 1rem;
+      @include line-clamp(2);
     }
-  }
-  //   &__desc {
-  //     display: none;
-  //   }
-  &__title {
-    font-size: 1rem;
-    @include line-clamp(2);
   }
 }

@@ -11,8 +11,12 @@ const HomeScreen = () => {
     const dispatch = useDispatch();
     const pageToken = useSelector(state => state.homeVideos.nextPageToken);
     // AIzaSyDPfH26mn8umXzswSpKHpKRp6ag1me3Yr0 - mine
-    //  AIzaSyDFPqLPCsfIHo5djSovBx7dnfwsCK1RkQM - kunal
-    //  AIzaSyDLO-QcfHB9fBWitQo-MHvefclAQWLv1pU - kunal2
+    //  AIzaSyDFPqLPCsfIHo5djSovBx7dnfwsCK1RkQM - kunal32
+    //  AIzaSyDLO-QcfHB9fBWitQo-MHvefclAQWLv1pU - kunal33
+    // AIzaSyAPYpKnfmQSLmBbQ8WuafnIcgm3ZZFC7zc - kunal34
+    // AIzaSyDc5NHvzMpeQkCrlMN_9u3xHIjmmlxyh7A - kunal35
+    // AIzaSyBrjOB0mmAjZ9u2mFsDp3uW0byFXpD_NGs - kuna35(firebase auto created)
+    // AIzaSyB3-5wXkOMaCzzDWzjK0X1Z83GoiGplLhI - mine YS
     useEffect(() => {
         dispatch(popularVideosRequest());
         fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=IN&maxResults=20&pageToken=&key=AIzaSyDPfH26mn8umXzswSpKHpKRp6ag1me3Yr0')
@@ -76,7 +80,7 @@ const HomeScreen = () => {
     return (
 
         <Container>
-            <CategoriesBar />
+            {/* <CategoriesBar /> */}
             <InfiniteScroll
                 dataLength={videos && videos.length}
                 next={fetchData}

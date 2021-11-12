@@ -8,6 +8,9 @@ import HomeScreen from './screens/homeScreen/HomeScreen';
 import LoginScreen from './screens/loginScreen/LoginScreen';
 import { useSelector } from 'react-redux';
 import WatchScreen from './screens/watchScreen/WatchScreen';
+import SearchScreen from './screens/searchScreen/SearchScreen';
+import SubscriptionsScreen from './screens/subscriptionsScreen/SubscriptionsScreen';
+import ChannelScreen from './screens/channelScreen/ChannelScreen';
 
 const Layout = ({ children }) => {
   const [toggleSideBar, setToggleSidebar] = useState(false);
@@ -48,14 +51,24 @@ const App = () => {
       <Route exact path='/auth'>
         <LoginScreen />
       </Route>
-      <Route exact path='/search'>
+      <Route exact path='/search/:query'>
         <Layout>
-          <h1>Search results</h1>
+          <SearchScreen />
         </Layout>
       </Route>
       <Route exact path='/watch/:id'>
         <Layout>
           <WatchScreen />
+        </Layout>
+      </Route>
+      <Route exact path='/feed/subscriptions'>
+        <Layout>
+          <SubscriptionsScreen />
+        </Layout>
+      </Route>
+      <Route exact path='/channel/:channelId'>
+        <Layout>
+          <ChannelScreen />
         </Layout>
       </Route>
       <Route>

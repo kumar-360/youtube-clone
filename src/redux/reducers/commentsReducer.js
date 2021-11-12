@@ -1,34 +1,35 @@
+import { COMMENTS_LIST_FAIL, COMMENTS_LIST_REQUEST, COMMENTS_LIST_SUCCESS, CREATE_COMMENT_FAIL, CREATE_COMMENT_SUCCESS } from "../actionTypes";
+
 const initialState = {
     loading: false,
-    channel: null,
-    error: null,
-    subscriptionStatus: false
+    comments: null
 };
 
-export const channelDetailsReducer = (prevState = initialState, { type, payload }) => {
+export const commentsListReducer = (prevState = initialState, { type, payload }) => {
     switch (type) {
-        case CHANNEL_DETAILS_REQUEST:
+        case COMMENTS_LIST_REQUEST:
             return {
                 ...prevState,
                 loading: true,
             }
-        case CHANNEL_DETAILS_SUCCESS:
+        case COMMENTS_LIST_SUCCESS:
             return {
                 ...prevState,
                 loading: false,
-                channel: payload
+                comments: payload
             }
-        case CHANNEL_DETAILS_FAIL:
+        case COMMENTS_LIST_FAIL:
             return {
                 ...prevState,
                 loading: false,
-                channel: null,
                 error: payload
             }
-        case SET_SUBSCRIPTION_STATUS:
+        case CREATE_COMMENT_SUCCESS:
+            return prevState;
+        case CREATE_COMMENT_FAIL:
             return {
                 ...prevState,
-                subscriptionStatus: payload
+                error: payload
             }
         default:
             return prevState;

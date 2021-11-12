@@ -1,0 +1,43 @@
+@import "../../_base.scss";
+
+.channelHeader {
+  border-bottom: 1px solid $border-color;
+  &__left {
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+  }
+  button {
+    background-color: red;
+    color: #fff;
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    &.btn-gray {
+      background-color: gray;
+    }
+    &:hover {
+      color: #fff;
+    }
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+}
+@media (max-width: $breakpoint-medium) {
+  .channelHeader {
+    padding: 1.1rem 0;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+    h3 {
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+}

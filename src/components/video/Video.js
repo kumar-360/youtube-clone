@@ -6,7 +6,7 @@ import { AiFillEye } from 'react-icons/ai';
 import './_video.scss';
 import { useHistory } from 'react-router';
 
-const Video = ({ video }) => {
+const Video = ({ video, channelScreen }) => {
     const [views, setViews] = useState(null);
     const [duration, setDuration] = useState(null);
     const [channelIcon, setChannelIcon] = useState(null);
@@ -14,9 +14,8 @@ const Video = ({ video }) => {
 
     const seconds = moment.duration(duration).asSeconds();
     const formattedDuration = moment.utc(seconds * 1000).format('mm:ss');
-    const { id, snippet: { channelId, channelTitle, title, publishedAt, thumbnails: { medium } } } = video;
-    const videoId = typeof (id) === 'string' ? id : id.videoId;
-
+    const { id, contentDetails, snippet: { channelId, channelTitle, title, publishedAt, thumbnails: { medium } } } = video;
+    const videoId = id?.videoId || contentDetails?.videoId || id;
     useEffect(() => {
         fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=AIzaSyDPfH26mn8umXzswSpKHpKRp6ag1me3Yr0`)
             .then(res => res.json())
@@ -51,17 +50,16 @@ const Video = ({ video }) => {
             <div className='video__title'>{title}</div>
             <div className='video__details'>
                 <span>
-                    <AiFillEye /> {numeral(views).format('0.a')} Views •
+                    <AiFillEye /> {numeral(views).format('0.a')} Views &nbsp; • &nbsp;
                 </span>
                 <span>
                     {moment(publishedAt).fromNow()}
                 </span>
             </div>
-            <div className='video__channel'>
-                {/* <img src={channelIcon && channelIcon.url} alt='' /> */}
+            {!channelScreen && <div className='video__channel'>
                 <LazyLoadImage src={channelIcon && channelIcon.url} effect='blur' />
                 <p>{channelTitle}</p>
-            </div>
+            </div>}
         </div>
     );
 };

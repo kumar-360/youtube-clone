@@ -13,6 +13,7 @@ import './_sidebar.scss';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { logout } from '../../redux/actions/authActions';
+import { Link } from 'react-router-dom';
 
 const Sidebar = ({ toggleSideBar, handleToggleSidebar }) => {
     const auth = getAuth();
@@ -36,10 +37,12 @@ const Sidebar = ({ toggleSideBar, handleToggleSidebar }) => {
                 <MdHome size={23} />
                 <span>Home</span>
             </div>
-            <div>
-                <MdSubscriptions size={23} />
-                <span>Subscriptions</span>
-            </div>
+            <Link to='/feed/subscriptions'>
+                <div>
+                    <MdSubscriptions size={23} />
+                    <span>Subscriptions</span>
+                </div>
+            </Link>
             <div>
                 <MdThumbUp size={23} />
                 <span>Liked Videos</span>

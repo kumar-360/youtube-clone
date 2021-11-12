@@ -2,15 +2,16 @@ import moment from 'moment';
 import React from 'react';
 import './_comment.scss';
 
-const Comment = () => {
+const Comment = ({ comment }) => {
+    const { authorDisplayName, authorProfileImageUrl, publishedAt, textDisplay } = comment;
     return (
         <div className='comment p-2 d-flex'>
-            <img src='/images/avatar-logo.png' alt='' className='rounded-circle' style={{ marginRight: '3rem' }} />
+            <img src={authorProfileImageUrl} alt='' className='rounded-circle' style={{ marginRight: '3rem' }} />
             <div className='comment__body'>
                 <p className='comment__header mb-1'>
-                    Kumar Shanu • {moment(2).fromNow()}
+                    {authorDisplayName} • {moment(publishedAt).fromNow()}
                 </p>
-                <p className='mb-0'>Nice Video!!!</p>
+                <p className='mb-0'>{textDisplay}</p>
             </div>
         </div>
     );

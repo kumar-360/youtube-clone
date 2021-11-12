@@ -46,7 +46,7 @@ const CategoriesBar = () => {
                     getVideosByCategoryFail(err.message);
                 })
         }
-    }, [activeElement])
+    }, [activeElement, tempVar, nextPageTokenData, dispatch])
     const handleActiveElement = (value) => {
         setActiveElement(value);
         setTempVar(true);

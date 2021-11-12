@@ -1,4 +1,4 @@
-import { HOME_VIDEOS_FAIL, HOME_VIDEOS_REQUEST, HOME_VIDEOS_SUCCESS, SELECTED_VIDEO_FAIL, SELECTED_VIDEO_REQUEST, SELECTED_VIDEO_SUCCESS } from "../actionTypes";
+import { CHANNEL_VIDEOS_FAIL, CHANNEL_VIDEOS_REQUEST, CHANNEL_VIDEOS_SUCCESS, HOME_VIDEOS_FAIL, HOME_VIDEOS_REQUEST, HOME_VIDEOS_SUCCESS, RELATED_VIDEOS_FAIL, RELATED_VIDEOS_REQUEST, RELATED_VIDEOS_SUCCESS, SEARCH_VIDEOS_FAIL, SEARCH_VIDEOS_SUCCESS, SELECTED_VIDEO_FAIL, SELECTED_VIDEO_REQUEST, SELECTED_VIDEO_SUCCESS } from "../actionTypes";
 
 const initialStateHomeVideo = {
     videos: [],
@@ -34,13 +34,13 @@ export const homeVideosReducer = (prevState = initialStateHomeVideo, { type, pay
     }
 }
 
-const initialStateSelectedvideo = {
+const initialStateSelectedVideo = {
     loading: false,
     video: null,
     error: null
 }
 
-export const selectedVideoReducer = (prevState = initialStateSelectedvideo, { type, payload }) => {
+export const selectedVideoReducer = (prevState = initialStateSelectedVideo, { type, payload }) => {
     switch (type) {
         case SELECTED_VIDEO_REQUEST:
             return {
@@ -58,6 +58,96 @@ export const selectedVideoReducer = (prevState = initialStateSelectedvideo, { ty
                 ...prevState,
                 loading: false,
                 video: null,
+                error: payload
+            }
+        default:
+            return prevState;
+    }
+}
+
+const initialStateRelatedVideos = {
+    loading: false,
+    videos: null,
+    error: null
+}
+
+export const relatedVideosReducer = (prevState = initialStateRelatedVideos, { type, payload }) => {
+    switch (type) {
+        case RELATED_VIDEOS_REQUEST:
+            return {
+                ...prevState,
+                loading: true,
+            }
+        case RELATED_VIDEOS_SUCCESS:
+            return {
+                ...prevState,
+                loading: false,
+                videos: payload
+            }
+        case RELATED_VIDEOS_FAIL:
+            return {
+                ...prevState,
+                loading: false,
+                error: payload
+            }
+        default:
+            return prevState;
+    }
+}
+
+const initialStateSearchVideos = {
+    loading: false,
+    videos: null,
+    error: null
+}
+
+export const searchVideosReducer = (prevState = initialStateSearchVideos, { type, payload }) => {
+    switch (type) {
+        case SELECTED_VIDEO_REQUEST:
+            return {
+                ...prevState,
+                loading: true,
+            }
+        case SEARCH_VIDEOS_SUCCESS:
+            return {
+                ...prevState,
+                loading: false,
+                videos: payload
+            }
+        case SEARCH_VIDEOS_FAIL:
+            return {
+                ...prevState,
+                loading: false,
+                error: payload
+            }
+        default:
+            return prevState;
+    }
+}
+
+const initialStateChannelVideos = {
+    loading: false,
+    videos: null,
+    error: null
+}
+
+export const channelVideosReducer = (prevState = initialStateChannelVideos, { type, payload }) => {
+    switch (type) {
+        case CHANNEL_VIDEOS_REQUEST:
+            return {
+                ...prevState,
+                loading: true,
+            }
+        case CHANNEL_VIDEOS_SUCCESS:
+            return {
+                ...prevState,
+                loading: false,
+                videos: payload
+            }
+        case CHANNEL_VIDEOS_FAIL:
+            return {
+                ...prevState,
+                loading: false,
                 error: payload
             }
         default:
