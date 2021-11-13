@@ -21,7 +21,7 @@ const VideoHorizontal = ({ video, searchScreen, subscriptionsScreen }) => {
             fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=AIzaSyDPfH26mn8umXzswSpKHpKRp6ag1me3Yr0`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log('===== fetching duration and views of videos horizontal')
+                    // console.log('===== fetching duration and views of videos horizontal')
                     setDuration(data.items[0].contentDetails.duration);
                     setViews(data.items[0].statistics.viewCount);
                 })
@@ -32,7 +32,7 @@ const VideoHorizontal = ({ video, searchScreen, subscriptionsScreen }) => {
         fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=AIzaSyDPfH26mn8umXzswSpKHpKRp6ag1me3Yr0`)
             .then(res => res.json())
             .then(data => {
-                console.log('===== fetching channel icon of videos horizontal')
+                // console.log('===== fetching channel icon of videos horizontal')
                 setChannelIcon(data.items[0].snippet.thumbnails.default);
             })
             .catch(err => console.log(err));

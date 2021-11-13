@@ -6,6 +6,7 @@ import { MdThumbDown, MdThumbUp } from 'react-icons/md';
 import './_videoMetaData.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkSubscriptionStatus, getChannelDetailsFail, getChannelDetailsRequest, getChannelDetailsSuccess } from '../../redux/actions/channelActions';
+import HelmetCustom from '../HelmetCustom';
 
 const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
     const { channelId, channelTitle, description, title, publishedAt } = snippet;
@@ -21,7 +22,7 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
         fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=AIzaSyDPfH26mn8umXzswSpKHpKRp6ag1me3Yr0`)
             .then(res => res.json())
             .then(data => {
-                console.log('===== fetching channel details from video metadata')
+                // console.log('===== fetching channel details from video metadata')
                 dispatch(getChannelDetailsSuccess(data.items[0]));
             })
             .catch(err => {
@@ -36,7 +37,7 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log('===== fetching subscription details from video metadata')
+                // console.log('===== fetching subscription details from video metadata')
                 dispatch(checkSubscriptionStatus(data));
             })
             .catch(err => {
@@ -45,6 +46,7 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
     }, [dispatch, channelId, authToken]);
     return (
         <div className='videoMetaData'>
+            <HelmetCustom title={title} description={description} />
             <div className='videoMetaData__top'>
                 <h5>{title}</h5>
                 <div className='d-flex justify-content-between align-items-center py-1'>

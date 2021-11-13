@@ -6,6 +6,7 @@ import CategoriesBar from '../../components/categoriesBar/CategoriesBar';
 import Video from '../../components/video/Video';
 import { getPopularVideos, getVideosByCategoryFail, getVideosByCategoryRequest, getVideosByCategorySuccess, popularVideosFail, popularVideosRequest } from '../../redux/actions/videoActions';
 import SkeletonVideo from '../../skeletons/SkeletonVideo';
+import HelmetCustom from '../../components/HelmetCustom';
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const HomeScreen = () => {
                     category: 'All'
                 }
                 dispatch(getPopularVideos(videosData));
-                console.log('===== home screen fetching')
+                // console.log('===== home screen fetching')
             })
             .catch(err => {
                 dispatch(popularVideosFail(err.message));
@@ -53,7 +54,7 @@ const HomeScreen = () => {
                         category: activeCategory
                     }
                     dispatch(getPopularVideos(videosData));
-                    console.log('===== infinite scroll for All fetching')
+                    // console.log('===== infinite scroll for All fetching')
                 })
                 .catch(err => {
                     dispatch(popularVideosFail(err.message));
@@ -69,7 +70,7 @@ const HomeScreen = () => {
                         category: activeCategory
                     }
                     dispatch(getVideosByCategorySuccess(videosData));
-                    console.log('===== infinite scroll for other categories fetching')
+                    // console.log('===== infinite scroll for other categories fetching')
                 })
                 .catch(err => {
                     getVideosByCategoryFail(err.message);
@@ -81,6 +82,7 @@ const HomeScreen = () => {
 
         <Container>
             {/* <CategoriesBar /> */}
+            <HelmetCustom />
             <InfiniteScroll
                 dataLength={videos && videos.length}
                 next={fetchData}

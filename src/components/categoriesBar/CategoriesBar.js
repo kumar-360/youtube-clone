@@ -24,7 +24,7 @@ const CategoriesBar = () => {
                         category: activeElement
                     }
                     dispatch(getPopularVideos(videosData));
-                    console.log('===== clicked on All fetching')
+                    // console.log('===== clicked on All fetching')
                 })
                 .catch(err => {
                     dispatch(popularVideosFail(err.message));
@@ -40,7 +40,7 @@ const CategoriesBar = () => {
                         category: activeElement
                     }
                     dispatch(getVideosByCategorySuccess(videosData));
-                    console.log('===== clicked on other categories fetching')
+                    // console.log('===== clicked on other categories fetching')
                 })
                 .catch(err => {
                     getVideosByCategoryFail(err.message);

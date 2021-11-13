@@ -4,8 +4,9 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { firebaseConfig } from '../../firebase';
 import './_loginScreen.scss';
-import { login, loginFail, loginRequest, logout } from '../../redux/actions/authActions';
+import { login, loginFail, loginRequest } from '../../redux/actions/authActions';
 import { useHistory } from 'react-router';
+import HelmetCustom from '../../components/HelmetCustom';
 
 const LoginScreen = () => {
     const app = initializeApp(firebaseConfig);
@@ -14,7 +15,6 @@ const LoginScreen = () => {
     const auth = getAuth();
     const history = useHistory();
     const accessToken = useSelector(state => state.auth.accessToken);
-    // console.log(accessToken)
     useEffect(() => {
         if (accessToken) {
             history.push('/');
@@ -24,11 +24,8 @@ const LoginScreen = () => {
         provider.addScope('https://www.googleapis.com/auth/youtube.force-ssl');
         signInWithPopup(auth, provider)
             .then(result => {
-                // console.log(result)
                 dispatch(loginRequest());
-                console.log(result)
                 const loginData = {
-                    // accessToken: result.user.accessToken,
                     accessToken: result._tokenResponse.oauthAccessToken,
                     profile: {
                         name: result.user.displayName,
@@ -46,6 +43,7 @@ const LoginScreen = () => {
 
     return (
         <div className='login'>
+            <HelmetCustom title='Login' />
             <div className='login__container'>
                 <img src='/images/youtube-logo.png' alt='' />
                 <button onClick={handleLogin}>Login With Google</button>

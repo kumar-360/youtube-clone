@@ -22,7 +22,7 @@ const Video = ({ video, channelScreen }) => {
             .then(data => {
                 setDuration(data.items[0].contentDetails.duration);
                 setViews(data.items[0].statistics.viewCount);
-                console.log('===== video duration fetching')
+                // console.log('===== video duration fetching')
             })
             .catch(err => console.log(err));
     }, [videoId]);
@@ -31,7 +31,7 @@ const Video = ({ video, channelScreen }) => {
             .then(res => res.json())
             .then(data => {
                 setChannelIcon(data.items[0].snippet.thumbnails.default);
-                console.log('===== channel icon fetching')
+                // console.log('===== channel icon fetching')
             })
             .catch(err => console.log(err));
     }, [channelId]);

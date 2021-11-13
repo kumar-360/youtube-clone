@@ -10,6 +10,7 @@ const Comments = ({ videoId, totalComments }) => {
     const dispatch = useDispatch();
     const commentsMapper = useSelector(state => state.commentsList.comments);
     const comments = commentsMapper?.map(comment => comment.snippet.topLevelComment.snippet);
+    // const { photoURL } = useSelector(state => state.auth?.user);
     const getComments = () => {
         dispatch(getCommentsOfVideoByIdRequest());
         fetch(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=AIzaSyDPfH26mn8umXzswSpKHpKRp6ag1me3Yr0`,
@@ -22,7 +23,7 @@ const Comments = ({ videoId, totalComments }) => {
             .then(res => res.json())
             .then(data => {
                 dispatch(getCommentsOfVideoByIdSuccess(data));
-                console.log('===== fetching comments of videos')
+                // console.log('===== fetching comments of videos')
             })
             .catch(err => {
                 dispatch(getCommentsOfVideoByIdFail(err.message));
@@ -56,7 +57,7 @@ const Comments = ({ videoId, totalComments }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('===== posting comment on video')
+                // console.log('===== posting comment on video')
                 setText('');
                 dispatch(addCommentSuccess());
                 getComments();

@@ -33,10 +33,12 @@ const Sidebar = ({ toggleSideBar, handleToggleSidebar }) => {
     };
     return (
         <nav className={toggleSideBar ? 'sidebar open' : 'sidebar'} onClick={handleToggleSidebar}>
-            <div>
-                <MdHome size={23} />
-                <span>Home</span>
-            </div>
+            <Link to='/'>
+                <div>
+                    <MdHome size={23} />
+                    <span>Home</span>
+                </div>
+            </Link>
             <Link to='/feed/subscriptions'>
                 <div>
                     <MdSubscriptions size={23} />

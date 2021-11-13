@@ -17,7 +17,7 @@ const WatchScreen = () => {
         fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=AIzaSyDPfH26mn8umXzswSpKHpKRp6ag1me3Yr0`)
             .then(res => res.json())
             .then(data => {
-                console.log('===== fetching single video for watch screen')
+                // console.log('===== fetching single video for watch screen')
                 dispatch(getVideoByIdSuccess(data.items[0]));
             })
             .catch(err => {
@@ -27,7 +27,7 @@ const WatchScreen = () => {
         fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${id}&maxResults=15&type=video&key=AIzaSyDPfH26mn8umXzswSpKHpKRp6ag1me3Yr0`)
             .then(res => res.json())
             .then(data => {
-                console.log('===== fetching related videos for watch screen')
+                // console.log('===== fetching related videos for watch screen')
                 dispatch(getRelatedVideosSuccess(data))
             })
             .catch(err => dispatch(getRelatedVideosFail(err.message)))

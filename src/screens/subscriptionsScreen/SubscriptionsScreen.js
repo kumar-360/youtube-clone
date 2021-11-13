@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { useDispatch, useSelector } from 'react-redux';
+import HelmetCustom from '../../components/HelmetCustom';
 import VideoHorizontal from '../../components/videoHorizontal/VideoHorizontal';
 import { getSubscribedChannelsFail, getSubscribedChannelsRequest, getSubscribedChannelsSuccess } from '../../redux/actions/subscriptionsAction';
 
@@ -24,10 +25,11 @@ const SubscriptionsScreen = () => {
             .catch(err => {
                 dispatch(getSubscribedChannelsFail(err.message));
             })
-    }, [authToken]);
+    }, [authToken, dispatch]);
     const { loading, channels } = useSelector(state => state.subscribedChannels);
     return (
         <Container fluid>
+            <HelmetCustom title='Subscriptions' />
             {!loading ? channels?.map(channel => <VideoHorizontal video={channel} key={channel.id} subscriptionsScreen />)
                 :
                 <SkeletonTheme baseColor='#343a40' highlightColor='#3c4147'>
