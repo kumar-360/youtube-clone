@@ -47,7 +47,7 @@ const LoginScreen = () => {
             <div className='login__container'>
                 <img src='/images/youtube-logo.png' alt='' />
                 <button onClick={handleLogin}>Login With Google</button>
-                <p>This project is made using YouTube Data API</p>
+                <p>Made using YouTube Data API. Please login to view the complete project.</p>
             </div>
         </div>
     );

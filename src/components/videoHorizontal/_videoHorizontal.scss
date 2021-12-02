@@ -58,6 +58,10 @@
 @media (max-width: $breakpoint-small) {
   .videoHorizontal {
     font-size: 0.8rem;
+    &__thumbnail {
+      height: 150px;
+      width: 150px;
+    }
     &__details {
       @include line-clamp(1);
     }
@@ -76,6 +80,15 @@
     &__title {
       font-size: 1rem;
       @include line-clamp(2);
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .videoHorizontal {
+    &__thumbnail {
+      height: 130px;
+      width: 130px;
     }
   }
 }
