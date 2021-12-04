@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import CategoriesBar from '../../components/categoriesBar/CategoriesBar';
 import Video from '../../components/video/Video';
-import { getPopularVideos, getVideosByCategoryFail, getVideosByCategoryRequest, getVideosByCategorySuccess, popularVideosFail, popularVideosRequest } from '../../redux/actions/videoActions';
+import { getPopularVideos, getPopularVideosByInfiniteScroll, getVideosByCategoryFail, getVideosByCategoryRequest, getVideosByCategorySuccess, popularVideosFail, popularVideosRequest } from '../../redux/actions/videoActions';
 import SkeletonVideo from '../../skeletons/SkeletonVideo';
 import HelmetCustom from '../../components/HelmetCustom';
 
@@ -46,7 +46,7 @@ const HomeScreen = () => {
                         nextPageToken: data.nextPageToken,
                         category: activeCategory
                     }
-                    dispatch(getPopularVideos(videosData));
+                    dispatch(getPopularVideosByInfiniteScroll(videosData));
                     // console.log('===== infinite scroll for All fetching')
                 })
                 .catch(err => {
