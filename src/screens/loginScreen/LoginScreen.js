@@ -47,7 +47,8 @@ const LoginScreen = () => {
             <div className='login__container'>
                 <img src='/images/youtube-logo.png' alt='' />
                 <button onClick={handleLogin}>Login With Google</button>
-                <p>Made using YouTube Data API. Please login to view the complete project.</p>
+                <p>Made using YouTube Data API. Please login to view the complete project. Please check recording of the project from the link below if you don't want to login due to privacy issues, as I am using the free version of firebase or if you can't see all the screens due to YouTube API daily limits. </p>
+                <a href='https://youtu.be/h4nMxkuMHMQ' target='_blank'>Recording</a>
             </div>
         </div>
     );

@@ -10,9 +10,19 @@
     padding: 2rem;
     margin: 0 1rem;
     border-radius: 10px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    a {
+      text-decoration: none;
+      background-color: #EFEFEF;
+      color: black;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+    }
     button {
       padding: 0.5rem;
       border: none;
@@ -32,9 +42,9 @@
 @media (max-width: 630px) {
   .login {
     &__container {
-        p {
-            margin-left: 15px;
-        }
+      p {
+        margin-left: 15px;
+      }
     }
   }
 }
