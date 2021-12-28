@@ -23,6 +23,7 @@ const Comments = ({ videoId, totalComments }) => {
             .then(res => res.json())
             .then(data => {
                 dispatch(getCommentsOfVideoByIdSuccess(data));
+                setText('');
                 // console.log('===== fetching comments of videos')
             })
             .catch(err => {
@@ -59,7 +60,6 @@ const Comments = ({ videoId, totalComments }) => {
             .then(data => {
                 // console.log('===== posting comment on video')
                 getComments();
-                setText('');
                 dispatch(addCommentSuccess());
             })
             .catch(err => dispatch(addCommentFail(err.message)))
